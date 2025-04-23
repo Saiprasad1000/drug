@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burn Fears, not Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #ff0000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff0000;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .header-image {
+            flex: 1;
+            padding: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-content {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ff0000;
+            line-height: 1.2;
+        }
+
+        .header-tagline {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            max-width: 600px;
+        }
+
+        .header-cta {
+            margin-top: 2rem;
+            display: inline-block;
+            background-color: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .header-cta:hover {
+            background-color: #e60000;
+            transform: translateY(-3px);
+        }
+
+        /* Action Cards Section */
+        .action-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 4rem 0;
+        }
+
+        .card {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 2rem;
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            align-self: flex-start;
+            border-radius: 4px;
+        }
+
+        .card-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Smoking Awareness Section */
+        .smoking-section {
+            display: flex;
+            flex-direction: column;
+            padding: 4rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .smoking-section {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .smoking-quote {
+            flex: 1;
+            padding: 2rem;
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        .smoking-image {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        /* Drugs Quote Section */
+        .drugs-section {
+            display: flex;
+            flex-direction: column;
+            padding: 4rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .drugs-section {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .drugs-image {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .drugs-quote {
+            flex: 1;
+            padding: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Facts Section */
+        .facts-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .facts-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .fact-card {
+            background: #ff0000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card p:first-child {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Testimonial Slider */
+        .testimonial-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .testimonial-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .slide p {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .slide cite {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ff0000;
+        }
+
+        .slider input {
+            display: none;
+        }
+
+        .navigation-manual {
+            position: absolute;
+            width: 100%;
+            bottom: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .manual-btn {
+            border: 2px solid #ff0000;
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .manual-btn:hover {
+            background: #ff0000;
+        }
+
+        #radio1:checked ~ .slides { transform: translateX(0%); }
+        #radio2:checked ~ .slides { transform: translateX(-100%); }
+        #radio3:checked ~ .slides { transform: translateX(-200%); }
+        #radio4:checked ~ .slides { transform: translateX(-300%); }
+        #radio5:checked ~ .slides { transform: translateX(-400%); }
+        #radio6:checked ~ .slides { transform: translateX(-500%); }
+
+        /* Footer Section */
+        .footer {
+            background-color: #1a1a1a;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 767px) {
+            .header-title, .header-subtitle {
+                font-size: 2.5rem;
+            }
+            
+            .header-tagline {
+                font-size: 1rem;
+            }
+            
+            .smoking-quote, .drugs-quote {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            
+            .card {
+                min-height: 180px;
+            }
+
+            .facts-section h2, .testimonial-section h2 {
+                font-size: 2rem;
+            }
+
+            .slide p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" aria-label="Main navigation">
+        <a href="#" class="logo">Burn<span>Free</span></a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#resources">Resources</a>
+            <a href="#stories">Stories</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="mobile-menu">
+            <span>☰</span>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="header" aria-label="Main header" id="about">
+        <div class="header-image">
+            <img src="./img1.png" alt="Red smoke effect representing freedom from addiction" id="header-img">
+        </div>
+        <div class="header-content">
+            <h1 class="header-title">Burn Fears,</h1>
+            <h2 class="header-subtitle">not Future</h2>
+            <p class="header-tagline">Break free from addiction's chains and reclaim the life you deserve. Together, we can overcome substance dependency and build a healthier tomorrow.</p>
+            <a href="#resources" class="header-cta">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- Action Cards Section -->
+    <div class="container" id="resources">
+        <section class="action-cards" aria-label="Actions to take for a drug-free life">
+            <div class="card">
+                <p class="card-text">Learn truth about Drugs. Enroll in the free online course.</p>
+                <button class="card-button" aria-label="Enroll in free drug education course">click</button>
+            </div>
+            <div class="card">
+                <p class="card-text">Sign the pledge and lead the way to a Drug-free life.</p>
+                <button class="card-button" aria-label="Sign pledge for drug-free life">click</button>
+            </div>
+            <div class="card">
+                <p class="card-text">Contact for a counseling.</p>
+                <button class="card-button" aria-label="Contact for counseling">click</button>
+            </div>
+        </section>
+
+        <!-- Smoking Awareness Section -->
+        <section class="smoking-section" aria-label="Smoking awareness quote">
+            <div class="smoking-quote">
+                <p>"Smoking is a vice that affects not only the smoker but also others around him. It is a selfish indulgence."</p>
+            </div>
+            <div class="smoking-image">
+                <img src="./img2.jpg" alt="Person exhaling smoke, highlighting smoking dangers" id="smoking-img">
+            </div>
+        </section>
+
+        <!-- Facts Section -->
+        <section class="facts-section" aria-label="Facts about addiction">
+            <h2>Facts About Addiction</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <p>480,000</p>
+                    <p>Deaths per year in the U.S. from smoking-related causes.</p>
+                </div>
+                <div class="fact-card">
+                    <p>70%</p>
+                    <p>Of drug users relapse without professional help.</p>
+                </div>
+                <div class="fact-card">
+                    <p>$740B</p>
+                    <p>Annual cost of drug abuse in the U.S.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Slider -->
+        <section class="testimonial-section" aria-label="Testimonials from recovered individuals" id="stories">
+            <h2>Success Stories</h2>
+            <div class="slider">
+                <input type="radio" name="slider" id="radio1" checked>
+                <input type="radio" name="slider" id="radio2">
+                <input type="radio" name="slider" id="radio3">
+                <input type="radio" name="slider" id="radio4">
+                <input type="radio" name="slider" id="radio5">
+                <input type="radio" name="slider" id="radio6">
+                <div class="slides">
+                    <div class="slide">
+                        <p>"Quitting smoking was the hardest but most rewarding decision I ever made. This program gave me the tools to succeed."</p>
+                        <cite>– Sarah M.</cite>
+                    </div>
+                    <div class="slide">
+                        <p>"I was trapped in addiction for years. The counseling and community here helped me reclaim my life."</p>
+                        <cite>– John D.</cite>
+                    </div>
+                    <div class="slide">
+                        <p>"The online course opened my eyes to the truth about drugs. Now, I'm living free and fearless."</p>
+                        <cite>– Emily R.</cite>
+                    </div>
+                    <div class="slide">
+                        <p>"After 15 years of alcohol dependence, I found the strength to change through this program. Today, I'm three years sober and helping others find their way out."</p>
+                        <cite>– Michael T.</cite>
+                    </div>
+                    <div class="slide">
+                        <p>"The free counseling sessions were a lifeline when I hit rock bottom. They didn't just help me quit - they helped me rebuild my relationships and career."</p>
+                        <cite>– Alisha K.</cite>
+                    </div>
+                    <div class="slide">
+                        <p>"As a teenager, I was heading down a dangerous path with drugs. This program's education resources showed me the real cost of addiction and gave me reasons to stay clean."</p>
+                        <cite>– Jason P.</cite>
+                    </div>
+                </div>
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn" aria-label="Show first testimonial"></label>
+                    <label for="radio2" class="manual-btn" aria-label="Show second testimonial"></label>
+                    <label for="radio3" class="manual-btn" aria-label="Show third testimonial"></label>
+                    <label for="radio4" class="manual-btn" aria-label="Show fourth testimonial"></label>
+                    <label for="radio5" class="manual-btn" aria-label="Show fifth testimonial"></label>
+                    <label for="radio6" class="manual-btn" aria-label="Show sixth testimonial"></label>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer" aria-label="Website footer" id="contact">
+        <div class="footer-content">
+            <p class="footer-text">© 2025 Burn Fears, not Future. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#privacy" aria-label="Privacy Policy">Privacy Policy</a>
+                <a href="#terms" aria-label="Terms of Service">Terms of Service</a>
+                <a href="#contact" aria-label="Contact Us">Contact Us</a>
+                <a href="#support" aria-label="Support">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to replace placeholder images with actual images
+        function updateImage(id, url) {
+            if (url && url.trim() !== '') {
+                document.getElementById(id).src = url;
+            }
+        }
+
+        // Mobile menu toggle functionality
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+
+    </script>
+</body>
+</html>
